@@ -30,6 +30,15 @@
 #include <linux/kasan.h>
 #include <linux/memremap.h>
 
+static inline void vm_flags_set(struct vm_area_struct *vma, vm_flags_t flags)
+{
+    vma->vm_flags |= flags;
+}
+static inline void vm_flags_clear(struct vm_area_struct *vma, vm_flags_t flags)
+{
+     vma->vm_flags &= ~flags;
+}
+
 struct mempolicy;
 struct anon_vma;
 struct anon_vma_chain;
